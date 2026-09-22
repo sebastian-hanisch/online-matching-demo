@@ -1,5 +1,7 @@
 # Online-Matching – entscheiden, bevor man alles weiß – Streamlit-Demo
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-online-matching-demo.streamlit.app/)**
+
 Siebtes Stück der **Matching-Linie** der "Konzepte"-Reihe für die Website "Sebastian Hanisch – Operations Research und Machine Learning", ein **unabhängiger Ast neben der Kostenlinie** (Wurzel: [Greedy-Matching](https://github.com/sebastian-hanisch/greedy-matching-demo)):
 anders als die Fall-Demos im Portfolio (ein Anwendungsfall, mehrere Verfahren im Vergleich) zeigt diese Demo **ein** Konzept – Zuordnen **ohne Kenntnis der Zukunft** – an einem wachsenden Beispiel.
 Die Ungarische Methode kennt alle Aufträge vorab. Hier **kommen die Aufträge nacheinander**, und jede Zusage ist **sofort und unwiderruflich**: ein Fahrzeug wird zugeteilt, bevor der nächste Auftrag bekannt ist. Verglichen wird mit dem **Offline-Optimum** (Ungarische Methode). Drei Regeln: **Greedy** (das billigste freie Fahrzeug), **Ranking** (Karp–Vazirani–Vazirani: eine zufällige feste Rangfolge der Fahrzeuge) und **Batching** (ein Fenster von Aufträgen sammeln und optimal lösen); vier **Ankunftsmodelle** (zufällig, flexible zuerst = gegnerisch, starre zuerst, von links nach rechts); und eine **Zeitdimension**: Fahrzeuge werden nach der Fahrt wieder frei.
