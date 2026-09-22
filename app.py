@@ -139,7 +139,7 @@ Das kostet etwas, und die Demo misst, wie viel. Die einfachste Regel, **Greedy**
 st.caption(
     "Anders als die Fall-Demos im Portfolio, die an einem Anwendungsfall mehrere Verfahren vergleichen, zeigt diese Demo - siebtes Stück der Matching-Linie der \"Konzepte\"-Reihe, unabhängiger Ast neben der Kostenlinie - **ein** Konzept an einem wachsenden Beispiel. "
     "Das Ziel ist lexikografisch wie in den Vorgängerdemos: **erst möglichst viele Paare, dann geringe Kosten**. Die Güte steht deshalb in zwei Zahlen: dem **Gütequotient der Paare** (Online-Paare geteilt durch die Paare des Optimums) und der **Prämie** der Kosten gegenüber der billigsten Paarung mit derselben Paarzahl. "
-    "Die Referenz \"Offline-Optimum\" ist die Ungarische Methode aus der Demo dazu. Nächste Nachbarn der Matching-Linie, noch nicht gebaut: Blossom, Gewichteter Blossom und Stabile Mitbewohner."
+    "Die Referenz \"Offline-Optimum\" ist die Ungarische Methode aus der Demo dazu. Die ganze Matching-Linie ist inzwischen vollständig gebaut."
 )
 
 with st.expander("So funktioniert Online-Matching", expanded=True):
@@ -521,7 +521,7 @@ st.markdown(
 | **Nur Paare zählen** | Für die Kosten gibt es kein festes Wettbewerbsverhältnis, und Ranking ist kostenblind (deutlich teurer als Greedy); kanten- und knotengewichtete Varianten sind eigene Verfahren. | (nicht gebaut) |
 """
 )
-st.caption("Die Nachbarn der Matching-Linie (noch nicht gebaut): Blossom, Gewichteter Blossom und Stabile Mitbewohner. Bereits gebaut: die Wurzel (Greedy-Matching), die Verbesserungswege, Hopcroft–Karp, die Ungarische Methode, der Auktionsalgorithmus, Gale–Shapley und diese Demo.")
+st.caption("Die Matching-Linie ist inzwischen vollständig gebaut (13 Stücke): die Wurzel (Greedy-Matching), die Verbesserungswege, Hopcroft–Karp, die Ungarische Methode, der Auktionsalgorithmus, Blossom, Gewichteter Blossom, Gale–Shapley, Stabile Mitbewohner, Krankenhaus-Zulassung, Top Trading Cycles, Nierentausch und diese Demo.")
 
 st.markdown("---")
 

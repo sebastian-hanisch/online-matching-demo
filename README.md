@@ -13,10 +13,13 @@ greedy-matching-demo (Wurzel: eine gewählte Zuordnung bleibt)                  
   │    ├─ hopcroft-karp-demo (viele kürzeste Wege je Phase)                       [gebaut]
   │    ├─ hungarian-demo (Ungarische Methode: Paare zuerst, dann Kosten)           [gebaut]
   │    │    └─ auction-algorithm-demo (Auktionsalgorithmus: dezentral)             [gebaut]
-  │    └─ Blossom                                                                  [nicht gebaut]
-  │   Ungarisch + Blossom → Gewichteter Blossom (Konvergenz)                       [nicht gebaut]
+  │    └─ blossom-demo (allgemeine Graphen: ungerade Kreise, Kontraktion)          [gebaut]
+  │        └─ weighted-blossom-demo (Ungarisch + Blossom, Konvergenz)              [gebaut]
   ├─ gale-shapley-demo (Vorlieben statt Kosten, stabil)                            [gebaut]
-  │    └─ Stabile Mitbewohner                                                      [nicht gebaut]
+  │    ├─ stabile-mitbewohner-demo (eine Gruppe statt zwei Seiten)                 [gebaut]
+  │    ├─ krankenhaus-zulassung-demo (many-to-one, Kapazitäten)                    [gebaut]
+  │    ├─ top-trading-cycles-demo (Tausch ohne Geld, Wohnungsmarkt)                [gebaut]
+  │    └─ nierentausch-demo (Kompatibilität statt Präferenz, kurze Zyklen)         [gebaut]
   └─ online-matching-demo (Aufträge kommen nacheinander)                           [dieses Stück]
 ```
 
