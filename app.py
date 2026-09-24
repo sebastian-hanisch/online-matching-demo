@@ -23,6 +23,7 @@ from om_presets import (
     init_session_state_defaults,
     load_permalink_settings,
     randomize_seed,
+    seed_widget,
     sync_query_params,
 )
 from om_scenario import build, priority
@@ -176,15 +177,20 @@ with st.sidebar:
         help="Eine zufällige Karte mit Fahrzeugen und Aufträgen oder eine feste Lehrbuchkarte: die Treppe (Greedy findet nur die Hälfte) und ein Pfad aus vier Punkten (der Fall im Kleinen).",
     )
     if net_key == "random":
+        seed_widget("n_slider")
         n = st.slider("Fahrzeuge", *bounds("n_slider"), key="n_slider", help="Anzahl der Fahrzeuge (alle vorab bekannt).")
         st.session_state[KEPT["n_slider"]] = n
+        seed_widget("m_slider")
         m = st.slider("Aufträge", *bounds("m_slider"), key="m_slider", help="Anzahl der Aufträge, die nacheinander eintreffen.")
         st.session_state[KEPT["m_slider"]] = m
+        seed_widget("reach_slider")
         reach = st.slider("Reichweite [min]", *bounds("reach_slider"), key="reach_slider", step=5,
                           help="Wie weit ein Paar höchstens auseinander liegen darf. Je kleiner, desto weniger Alternativen hat ein Auftrag - und desto weniger kann eine falsche Wahl anrichten (bei 10 und bei 150 ist Greedy fast oder ganz optimal bei den Paaren, bei 40 verliert er).")
         st.session_state[KEPT["reach_slider"]] = reach
+        seed_widget("ballung_slider")
         ballung = st.slider("Ballung [%]", *bounds("ballung_slider"), key="ballung_slider", step=25, help="0 = Fahrzeuge und Aufträge gleichmäßig verteilt, 100 = alle um drei Stadtteile gruppiert.")
         st.session_state[KEPT["ballung_slider"]] = ballung
+        seed_widget("seed_input")
         seed = st.number_input("Zufalls-Seed", *bounds("seed_input"), key="seed_input", step=1)
         st.session_state[KEPT["seed_input"]] = seed
         st.button("🎲 Neue Karte generieren", width="stretch", on_click=randomize_seed, help="Würfelt einen neuen Zufalls-Seed. Die Verteilung über 100 feste Karten weiter unten ändert sich dabei nicht.")
@@ -209,6 +215,7 @@ with model_col:
         _kept_widget("model_radio", False)
     else:
         _kept_widget("model_radio", True)
+        seed_widget("model_radio")
         model = st.radio("Modell", list(C.MODEL_LABELS), key="model_radio", format_func=lambda k: C.MODEL_LABELS[k],
                          help="Statisch: jedes Fahrzeug fährt höchstens einen Auftrag. Mit Zeit: nach D Minuten Belegung ist es wieder frei und steht am Ort des letzten Auftrags.")
         st.session_state[KEPT["model_radio"]] = model
@@ -229,6 +236,7 @@ with ctl1:
         st.caption("Die Aufträge treffen zu zufälligen Minuten zwischen 0 und 120 ein.")
     else:
         _kept_widget("arr_radio", True)
+        seed_widget("arr_radio")
         arr = st.radio("Ankunft der Aufträge", list(C.ARR_LABELS), key="arr_radio", format_func=lambda k: C.ARR_LABELS[k],
                        help="Zufällig: eine gemischte Reihenfolge. Flexible zuerst: Aufträge mit vielen erreichbaren Fahrzeugen kommen vorn (gegnerisch). Starre zuerst: umgekehrt. Von links nach rechts: der Ort bestimmt die Reihenfolge.")
         st.session_state[KEPT["arr_radio"]] = arr
@@ -240,12 +248,15 @@ with ctl2:
     _kept_widget("prio_slider", rule == "ranking")
     _kept_widget("dur_slider", dynamic)
     if rule == "batch" and not dynamic:
+        seed_widget("w_slider")
         w = st.slider("Fenster w", *bounds("w_slider"), key="w_slider", help="Wie viele Aufträge ein Stapel sammelt, bevor die Ungarische Methode ihn den freien Fahrzeugen zuordnet. Ein Fenster von 1 ist Greedy, ein Fenster ab m Aufträgen ist das Offline-Optimum.")
         st.session_state[KEPT["w_slider"]] = w
     if rule == "ranking":
+        seed_widget("prio_slider")
         prio = st.slider("Rangfolge Nr.", *bounds("prio_slider"), key="prio_slider", help="Welche der 20 gezogenen zufälligen Rangfolgen der Fahrzeuge verwendet wird. Der Erwartungswert über alle 20 steht in der Verteilung unten.")
         st.session_state[KEPT["prio_slider"]] = prio
     if dynamic:
+        seed_widget("dur_slider")
         dur = st.slider("Belegungszeit D [min]", *bounds("dur_slider"), key="dur_slider", step=5,
                         help="So lange ist ein Fahrzeug nach der Zuordnung belegt (die Fahrzeit ist nur Kosten). Bei 120 ist es praktisch das statische Modell.")
         st.session_state[KEPT["dur_slider"]] = dur
